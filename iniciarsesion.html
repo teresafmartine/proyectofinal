@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ResFav - Login</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+      <link rel="stylesheet" href="css/general.css"> <!-- Si tienes un archivo de estilos CSS -->
+</head>
+<body>
+  <script src="js/general.js"></script>
+  <!--<script src="js/iniciarsesion.js"></script> -->
+    <header>
+        <!-- Contenedor para el logo y el menú -->
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="Paginicio.html"><img src="img/logo.png" alt="Logo resfav"></a>
+            <!-- Menú -->
+            <nav class="menu_principal">
+                <ul>
+                    <li><a href="Paginicio.html">Inicio</a></li>
+                    <li><a href="restaurantes.html">Restaurantes</a></li>
+                    <li><a href="historia.html">Historia ResFav</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="iniciarsesion.html" class="icono-iniciar-sesion"><img src="img/acceso.png" alt="Icono de inicio de sesión"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="imagen_portadas_pag">
+        <div class="contenido_portada">
+            <h1>Registro</h1>
+        </div>
+    </div>
+    <div class="container">
+        <img src="img/logo.png" alt="Logo RunAuto" class="img-login">
+        <form class="form-signin" action="/codigo/php/login.php">
+            <h1 class="h3 mb-3 font-weight-bold">Login</h1>
+            <input type="email" id="inputEmail" class="form-control mb-3" placeholder="Nombre de usuario" required autofocus>
+            <input type="password" id="inputPassword" class="form-control mb-3" placeholder="Contraseña" required>
+            <div class="row">
+                <div class="col">
+                    <button type="submit">Iniciar sesión</button>
+                </div>
+                <div class="col">
+                    <button  type="button" onclick="location.href='registro.html';">Registrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>

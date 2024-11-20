@@ -1,0 +1,389 @@
+/* Contenedor para el logo y el menú */
+.header-container {
+    display: flex; /* Mostrar los elementos en línea */
+    justify-content: space-between; /* Espacio entre el logo y el menú */
+    align-items: center; /* Centrar verticalmente */
+    padding: 10px; /* Espacio interno */
+    border-bottom: 2px solid black; /* Borde inferior sombreado */
+    box-shadow: 0px 4px 4px -2px rgba(0,0,0,0.5);
+}
+
+/* Estilos para el menú principal */
+.menu_principal ul {
+  font-family: sans-serif;
+    list-style-type: none; /* Quita los estilos de lista */
+    margin: 0;
+    padding: 0;
+}
+
+.menu_principal ul li {
+  font-family: sans-serif;
+    display: inline; /* Muestra los elementos de lista en línea */
+    margin-right: 40px; /* Espacio entre elementos */
+}
+
+.menu_principal ul li:last-child {
+    margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+.menu_principal a {
+  font-family: sans-serif;
+  letter-spacing: 2px;
+    text-decoration: none; /* Quita la subrayado de los enlaces */
+    font-size: 14px; /* Tamaño de letra 20px */
+    text-transform: uppercase; /* Mayúsculas */
+    color: black; /* Color de texto */
+}
+
+
+.menu_principal ul li a:hover,
+.menu_principal ul li a:active {
+    color: gray;
+    border-bottom: 2px solid gray;
+}
+
+
+/* Estilos para el icono de inicio de sesión */
+.icono-iniciar-sesion img {
+    width: 25px; /* Ancho de 30px */
+    height: 25px; /* Alto de 30px */
+}
+
+/* Imagen portada pag Inicio */
+.imagen_portada {
+  background-image: url('../img/restaurante.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 500px; /* Altura de la imagen de portada */
+    position: relative;
+    font-family: sans-serif;
+}
+
+.imagen_portada>.contenido_portada {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+}
+
+.contenido_portada h1 {
+  color:white;
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+.boton_portada,button {
+    text-transform: uppercase;
+  font-family: sans-serif;
+  border-radius: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black; /* Color de fondo del botón */
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.boton_portada:hover {
+    background-color: white; /* Color de fondo del botón */
+    color: black;
+}
+
+/*imagen portada para el resto de las paginas*/
+.imagen_portadas_pag {
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  background-image: url('../img/restaurante2.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 200px; /* Altura de la imagen de portada */
+    position: relative;
+}
+.imagen_portadas_pag>.contenido_portada{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: white;
+}
+
+.imagen_portadas_pag>.contenido_portada h1{
+  color:white;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/*pag restaurantes*/
+.cuerpo {/*se vea la pantalla completa de width*/
+  min-height: 100vh;
+}
+.filtrado_restaurantes {
+  background-color: #D6DBDF;
+  padding: 2vw;
+  text-align: center;
+}
+
+.lista_Restaurantes {
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/*footer*/
+footer {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #e7e7e7;
+}
+
+.footer-contenedor {
+  font-family: sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-columna {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.logo-footer {
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-enlaces {
+  font-family: sans-serif;
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-enlaces li {
+    margin: 5px 0;
+}
+
+.footer-enlaces a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.footer-enlaces a:hover {
+    color: grey;
+}
+
+@media (max-width: 768px) {
+    .footer-contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+
+/*pag historia*/
+.fila {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.columna {
+    flex: 1;
+    padding: 20px;
+}
+
+.texto {
+  font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen_historia {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .fila {
+        flex-direction: column;
+    }
+
+    .imagen, .texto {
+        width: 100%;
+        text-align: center;
+    }
+
+    .imagen_historia {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/*lista restaurantes
+#lista-restaurantes>div {
+  margin-top:3vw!important;
+  width: 100% !important;
+}
+
+#lista-restaurantes>div>img {
+  width: 50% !important;
+}*/
+#lista-restaurantes {
+  width: 80%;
+  margin: auto;
+}
+
+#lista-restaurantes .restaurante {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#lista-restaurantes>div>img {
+  width: 50% !important;
+}
+
+
+#restaurante-info{
+  width: 50%!important;
+      flex: 1;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+}
+
+#textocomentario {
+  font-family: sans-serif;
+  width: 60% !important;
+  height: 107px;
+  margin-top: 1vw;
+}
+
+.contenedor-restaurante {
+  display: flex;
+  justify-content: center;
+  margin-right: 30px!important
+}
+
+#alert {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000c;
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+#alert-contenido {
+  width: 500px;
+  height: 200px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+#alert h1 {
+  font-size: 1em
+}
+
+.contenedor-login {
+  display: flex;
+}
+.container-iniciar{
+  width: 30%!important;
+  background-color: white;
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  padding: 20px;
+  height: 350px;
+  margin: 30px;
+
+}
+.container-registrarse{
+  margin: 30px;
+  width: 30%!important;
+  background-color: white;
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  padding: 20px;
+  height: 350px;
+}
+
+.diseñolistarestaurante{
+  height: 350px;
+      background-color: white;
+      border-radius: 15px; /* Bordes redondeados */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+      padding: 20px;
+  margin-top:30px!important;
+  margin-bottom:30px!important;
+}
+#restaurante-info>#titulo_Restaurante{
+  font-size: 20px!important;
+  margin-top:10px!important;
+  text-transform: uppercase;
+  letter-spacing: 2px!important;
+  color:black!important;
+}
+#restaurante-info{
+  padding-left: 20px!important;
+}
+
+.container-registrarse,.container-iniciarsesion{
+  background-color: white;
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  padding: 20px;
+  height: 350px;
+}
+
+.contenedoremail{
+  margin-top: 20px!important;
+}
+.paginiciar{
+  font-size: 20px!important;
+  margin-top:10px!important;
+  text-transform: uppercase;
+  letter-spacing: 2px!important;
+  color:black!important;
+}
