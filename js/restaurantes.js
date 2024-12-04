@@ -1,16 +1,13 @@
 
 var restaurantes = [];
-
 async function cargarRestaurantes() {
   const snapshot = await database.collection('restaurantes').get();
-
   restaurantes = [];
   snapshot.forEach(async function(doc) {
     const restaurante = doc.data()
     restaurante._id = doc.id
     restaurantes.push(restaurante);
   });
-
 }
 
 async function mostrarRestaurante(restaurante) {
@@ -22,18 +19,13 @@ async function mostrarRestaurante(restaurante) {
   var imagenesEstrellas = '';
   var contEstrella = 0;
   while (contEstrella < estrellas) {
-    imagenesEstrellas += '<img src="img/estrella.png" style="width: 50px; height: 50px">';
+    imagenesEstrellas += '<img src="img/estrella.png" style="width: 20px; height: 20px">';
     contEstrella++;
   }
-
-
-
   var refImagen = await storage.refFromURL(restaurante.imagen).getDownloadURL();
   console.log(refImagen);
-
   // Agregar el restaurante a tu página HTML
   var restauranteElemento = document.createElement('div');
-
   var html = `
     <div class="contenedor-restaurante diseñolistarestaurante" >
       <img src="${refImagen}">
@@ -59,44 +51,51 @@ async function mostrarRestaurante(restaurante) {
       </div>
     </div>
   `;
-
-
-  //restauranteElemento.innerHTML = '<img src="' + refImagen + '">' + '<div id="restaurante-info"><h2><a href="#" onclick="mostrarUno(\''+restaurante._id+'\', event);" >' + nombre + '</a></h2><p>Dirección: ' + direccion + '</p><p>Teléfono: ' + telefono + '</p><p>Puntuación: ' + imagenesEstrellas + '</p></div>'
-  //   ;
   restauranteElemento.innerHTML = html;
   document.getElementById('lista-restaurantes').appendChild(restauranteElemento);
 }
-
+var pagina = 0;
 /*mostrar todos los restaurantes*/
 async function mostrarRestaurantes() {
   document.getElementById('lista-restaurantes').innerHTML = '';
-
   const user = auth.currentUser;
-
   let localidad = false;
   if (user) {
     const snapshot = await database.collection('usuarios')
       .where('email', '==', user.email)
       .get();
-
     snapshot.forEach(doc => {
-
         localidad = doc.data().localidad.toLowerCase();
     });
   }
-
   if (localidad) {
     restaurantes = [...restaurantes];
     restaurantes.sort((r1, r2) => {
       if (r1.localidad.toLowerCase() == localidad && r2.localidad.toLowerCase() != localidad) return -1;
       if (r1.localidad.toLowerCase() != localidad && r2.localidad.toLowerCase() == localidad) return 1;
       return r1.nombre.localeCompare(r2.nombre);
-
     });
   }
+  for (var i = 0; i < restaurantes.length; i++) {
+    if (i >= pagina*5 && i < (pagina+1)*5) {
+      await mostrarRestaurante(restaurantes[i]);
+    }
+  }
 
+  const paginas = document.createElement('div');
+  paginas.innerHTML = '<a href="#" id="boton-anterior" onclick="paginaAnterior()">Anterior</a> <a href="#" id="boton-siguiente" onclick="paginaSiguiente()">Siguiente</a>'
+  document.getElementById('lista-restaurantes').appendChild(paginas);
+}
 
-  restaurantes.forEach(mostrarRestaurante);
+function paginaAnterior() {
+  if (pagina == 0) return;
+  pagina--;
+  mostrarRestaurantes();
+}
+
+function paginaSiguiente() {
+  pagina++;
+  mostrarRestaurantes();
 }
 
 async function filtrarRestaurantes() {

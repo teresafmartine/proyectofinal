@@ -10,6 +10,7 @@ function irAPagina(pagina) {
   ocultarTodas();
   var pagInicio = document.querySelector('#pag-' + pagina);
   pagInicio.style.display = 'block';
+  document.querySelector('.menu_principal').classList.add('oculto-movil');
 }
 
 function irAInicio() {
@@ -37,4 +38,9 @@ function irAContacto() {
 
 function irAIniciarSesion() {
   irAPagina('iniciarsesion');
+}
+
+function mostrarMenu(ev) {
+  ev.preventDefault();
+  document.querySelector('.menu_principal').classList.remove('oculto-movil');
 }

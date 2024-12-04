@@ -20,8 +20,6 @@ var restaurantes = [];
 var comentarios = [];
 // Recuperar los restaurantes de la base de datos
 
-
-
 async function inicializar() {
 //  await cargarLogin();
   await cargarRestaurantes();
@@ -80,7 +78,7 @@ async function mostrarUno(id, event) {
   var imagenesEstrellas = '';
   var contEstrella = 0;
   while (contEstrella < estrellas) {
-    imagenesEstrellas += '<img src="img/estrella.png" style="width: 50px; height: 50px">';
+    imagenesEstrellas += '<img src="img/estrella.png" style="width: 30px; height: 30px">';
     contEstrella++;
   }
 
@@ -102,18 +100,16 @@ async function mostrarUno(id, event) {
       <div id="restaurante-info">
         <h2>${nombre}</h2>
         <p>
-          <img src="img/mapas-de-google.gif" style="width: 50px; height: 50px">
+          <img src="img/mapas-de-google.gif" style="width: 40px; height: 40px">
           Dirección: ${direccion}
         </p>
         <p>
-          <img src="img/llamada-telefonica.gif" style="width: 50px; height: 50px">
+          <img src="img/llamada-telefonica.gif" style="width: 40px; height: 40px">
           Teléfono: ${telefono}
         </p>
         <p>
-          <img src="img/clasificacion.gif" style="width: 50px; height: 50px">
+          <img src="img/clasificacion.gif" style="width: 40px; height: 40px">
           Votos antiguos clientes: ${puntuacion}
-        </p>
-        <p>Ubicacion: ${ubicacion}
         </p>
       </div>
     </div>
@@ -169,12 +165,8 @@ async function mostrarcomentarios(idRestaurante) {
     textocomentario.placeholder = 'Escribe tu comentario aquí...';
     resultado.appendChild(textocomentario);
 
-
-
-
     const botoncomentario = document.createElement('button');
     botoncomentario.textContent = 'Deja un comentario sobre este restaurante';
-
 
     const mensajeConfirmacion = document.createElement('p');
     mensajeConfirmacion.textContent = 'Tu comentario se guardó correctamente';
@@ -197,12 +189,7 @@ async function mostrarcomentarios(idRestaurante) {
       raterDiv.style.display = 'none';
       botoncomentario.style.display = 'none';
     });
-
-
     resultado.appendChild(botoncomentario);
-
-
-
 
   comentarios.forEach(async (comentarios) => {
     console.log(comentarios);
@@ -212,12 +199,10 @@ async function mostrarcomentarios(idRestaurante) {
 
     // Agregar el restaurante a tu página HTML
     var comentarioElemento = document.createElement('div');
-   comentarioElemento.innerHTML = '<h2>Comentarios:</h2><p>Correo cliente: ' + correoelectronico + '</p><p>Comentario: ' + contenido + '</p>'
+   comentarioElemento.innerHTML = '<h2 id="h2comentarios">Comentario de antiguo cliente:</h2><p><b>Correo cliente: </b>' + correoelectronico + '</p><p><b>Comentario: </b>' + contenido + '</p>'
        ;
     resultado.appendChild(comentarioElemento);
   });
-
-
 /*boton cerrar */
   const boton = document.createElement('button');
 boton.textContent = 'Cerrar comentarios';
@@ -230,7 +215,6 @@ boton.addEventListener('click', function() {
 resultado.appendChild(boton);
   return resultado;
 }
-
 /*opcion añadir comentario*/
 async function aniadirComentario(idRestaurante, puntuacion) {
   console.log(puntuacion);
@@ -260,21 +244,17 @@ async function aniadirComentario(idRestaurante, puntuacion) {
           votos: firebase.firestore.FieldValue.increment(1),
           puntos: firebase.firestore.FieldValue.increment(puntuacion)
         });
-
-
 }
-
-
 //poder registrar y cerrar sesion
 function actualizarBotonesLogin() {
   const user = auth.currentUser;
   if (user === null) {
-    document.getElementById('iniciarSesion').style.display = 'inline';
-    document.getElementById('cerrarSesion').style.display = 'none';
+    document.getElementById('iniciarSesion').style.visibility = 'visible';
+    document.getElementById('cerrarSesion').style.visibility = 'hidden';
   }
   else {
-    document.getElementById('iniciarSesion').style.display = 'none';
-    document.getElementById('cerrarSesion').style.display = 'inline';
+    document.getElementById('iniciarSesion').style.visibility = 'hidden';
+    document.getElementById('cerrarSesion').style.visibility = 'visible';
   }
 }
 
